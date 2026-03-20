@@ -34,6 +34,10 @@ All commit messages must follow [Conventional Commits](https://www.conventionalc
 
 Avoid skipping hooks. If absolutely required: `git commit --no-verify` — maintainers may reject such PRs.
 
+### Hook fails with “[input] is required”
+
+Recent **npm** versions can swallow `--edit` when invoked via `npx`. The repo’s `.husky/commit-msg` uses `npx --no -- commitlint --edit "$1"` so the flag reaches Commitlint. If you changed that file locally, restore the `--` before `commitlint`.
+
 ---
 
 ## Secrets and credentials
